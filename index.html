@@ -153,16 +153,17 @@
     }
     .banner {
       position: relative;
-      width: 100%;
-      min-height: 560px;
-      background: linear-gradient(rgba(24, 30, 42, 0), rgba(24, 30, 42, 0)), url('https://www.battle-adventure.eu/videos/video-bg.mp4') center/cover no-repeat;
+      width: 100vw;
+      height: 70vh; /* Prend toute la hauteur de l'écran */
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       flex-direction: column;
-      overflow: hidden;
-    }
+      text-align: center;
+      background: none; /* Laisse le bg video gérer */
+      z-index: 2;
+      min-height: 500px;
+  }
     .banner-content {
       position: relative;
       z-index: 2;
