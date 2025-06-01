@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Membres - Faction Nox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #212734;
+      color: #fff;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e2430;
+      padding: 20px 18vw;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      user-select: none;
+    }
+    .nav-item:hover {
+      color: #44ffac;
+    }
+    .nav-icon {
+      font-size: 1.8em;
+      margin-bottom: 6px;
+    }
+    .logo-main {
+      position: absolute;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      height: clamp(120px, 20vw, 250px);
+      transition: transform 0.3s cubic-bezier(.4,2.2,.2,1);
+      z-index: 20;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .logo-main:hover {
+      transform: translateX(-50%) scale(1.12);
+    }
+    .main-content {
+      max-width: 1100px;
+      margin: 120px auto 0 auto;
+      padding: 24px 2vw 48px 2vw;
+      background: rgba(30,36,48,0.7);
+      border-radius: 20px;
+      box-shadow: 0 6px 40px #0005;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 24px;
+    }
+    .membre-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .membre-card {
+      background: #283043;
+      border-radius: 18px;
+      box-shadow: 0 4px 20px #0003;
+      padding: 22px 30px;
+      min-width: 210px;
+      max-width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.15s, box-shadow 0.2s;
+      position: relative;
+    }
+    .membre-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #23ef7d50;
+    }
+    .membre-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 14px #0006;
+      background: #222;
+      object-fit: cover;
+      image-rendering: pixelated;
+    }
+    .membre-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 2px;
+      word-break: break-word;
+    }
+    .membre-rank {
+      font-weight: 700;
+      font-size: 1em;
+      margin-bottom: 6px;
+    }
+    .chef { color: #e6c047; }
+    .co-lead { color: #448fff; }
+    .moderateur { color: #44ffac; }
+    .membre { color: #f2f2f2; }
+    .membre-desc {
+      font-size: 0.97em;
+      color: #d8ffe4;
+      text-align: center;
+      line-height: 1.3;
+    }
+    @media (max-width: 900px) {
+      .main-content {
+        margin-top: 100px;
+        padding: 20px 2vw 30px 2vw;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      .membre-list {
+        gap: 15px;
+      }
+      .membre-card {
+        min-width: 160px;
+        max-width: 95vw;
+        padding: 15px 8vw;
+      }
+      .membre-avatar {
+        width: 65px; height: 65px;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-content {
+        margin-top: 70px;
+        padding: 8px 1vw 12px 1vw;
+      }
+      h1 {
+        font-size: 1.3em;
+      }
+      .membre-card {
+        min-width: 130px;
+        padding: 12px 4vw;
+      }
+      .membre-avatar {
+        width: 45px; height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-left">
+      <a class="nav-item" href="membre.html"><span class="nav-icon">👑</span>MEMBRE</a>
+    </div>
+    <a href="index.html">
+      <img class="logo-main" src="logo.png" alt="Logo Faction Nox" />
+    </a>
+    <div class="nav-right">
+      <a class="nav-item" href="https://discord.gg/faction-nox"><span class="nav-icon">💬</span>DISCORD</a>
+    </div>
+  </nav>
+  <main class="main-content">
+    <h1>Les Membres de la Faction Nox</h1>
+    <div class="membre-list" id="membre-list">
+      <!-- Les membres seront générés en JS -->
+    </div>
+  </main>
+  <script>
+    // Liste des membres
+    const membres = [
+        {pseudo: "Reetonn",        role: "Chef",        desc: "Fondateur et leader de la Faction Nox.",         rankClass: "chef"},
+        {pseudo: "Lubjuu",         role: "Co-lead",     desc: "Bras droit du chef, stratège et organisateur de la faction.",    rankClass: "co-lead"},
+        {pseudo: "Clarisse942350", role: "Co-lead",     desc: "Bras droit du chef, stratège et organisateur de la faction.",    rankClass: "co-lead"},
+        {pseudo: "Kitetsu_",       role: "Co-lead",     desc: "Bras droit du chef, stratège et organisateur de la faction.",    rankClass: "co-lead"},
+        {pseudo: "TheK1llero5",    role: "Modérateur",  desc: "Membre de la modération : surveillance et encadrement de la faction.",  rankClass: "moderateur"},
+        {pseudo: "_Amanite_",      role: "Modérateur",  desc: "Membre de la modération : surveillance et encadrement de la faction.",  rankClass: "moderateur"},
+        {pseudo: "xeluxx",         role: "Modérateur",  desc: "Membre de la modération : surveillance et encadrement de la faction.",  rankClass: "moderateur"},
+        {pseudo: "Eny_M4Giks",     role: "Modérateur",  desc: "Membre de la modération : surveillance et encadrement de la faction.",  rankClass: "moderateur"},
+        {pseudo: "NayzoxDev",      role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "Hashhe",         role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "_Mandex",        role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "Bridoux05",      role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "so0_0so",        role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "315968",         role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "_Anthonin_",     role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "LycaonCamel",    role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+        {pseudo: "Kweks",          role: "Membre",      desc: "Membre actif et fidèle, participant à la vie de la faction.",      rankClass: "membre"},
+    ];
+
+
+    // Génère les cartes membres avec skin Minecraft
+    const container = document.getElementById('membre-list');
+    membres.forEach(membre => {
+      const card = document.createElement('div');
+      card.className = 'membre-card';
+
+      // URL skin en temps réel
+      const skinURL = `https://minotar.net/armor/bust/${membre.pseudo}/100.png`;
+
+      card.innerHTML = `
+        <img class="membre-avatar" src="${skinURL}" alt="${membre.pseudo}">
+        <div class="membre-name">${membre.pseudo}</div>
+        <div class="membre-rank ${membre.rankClass}">${membre.role}</div>
+        <div class="membre-desc">${membre.desc}</div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Animation et redirection du logo
+    const logo = document.querySelector('.logo-main');
+    if (logo) {
+      logo.style.transition = 'transform 0.3s cubic-bezier(.4,2.2,.2,1)';
+      logo.style.pointerEvents = 'auto';
+      logo.style.cursor = "pointer";
+      logo.addEventListener('mouseenter', () => {
+        logo.style.transform = 'translateX(-50%) scale(1.12)';
+      });
+      logo.addEventListener('mouseleave', () => {
+        logo.style.transform = 'translateX(-50%)';
+      });
+      logo.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+    }
+  </script>
+</body>
+</html>
